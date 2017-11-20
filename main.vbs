@@ -5,7 +5,7 @@ Function FilesTree(sPath)
     Set oSubFolders = oFolder.SubFolders    
     Set oFiles = oFolder.Files  
     For Each oFile In oFiles  
-		MsgBox("go in loop")
+		'MsgBox("go in loop")
 		objCSVFile.Write chr(34) & oFile.Path & chr(34) & vbTab 
 		objCSVFile.Write chr(34) & oFile.ParentFolder & chr(34) & vbTab 
 		objCSVFile.Write chr(34) & oFile.Name & chr(34) & vbTab 
@@ -56,4 +56,6 @@ csvColumns = chr(34) & "FilePathAndName" & chr(34) & vbTab & _
 				
 objCSVFile.Write csvColumns
 objCSVFile.Writeline
-FilesTree("C:\Users\28153\Documents\17_American_Study\02_After_Arrive_US\P14_File_Scan") ' Call the func 
+Dim WshShell
+Set WshShell = CreateObject("WScript.Shell")
+FilesTree(WshShell.CurrentDirectory) ' Call the func 
